@@ -1,0 +1,33 @@
+    Common Locator Types in Playwright
+
+    1. Class Selector
+
+    locator('.class-name')
+    Selects elements with class="class-name"
+
+    2. ID Selector
+    locator('#element-id')
+    Selects element with id="element-id"
+
+    3. Attribute Selector
+    locator('[attribute="value"]')
+    // Example:
+    locator('[type="submit"]')
+
+    4. Parent → Child (Descendant or Direct Child)
+    Descendant (any level inside parent):
+
+    locator('div.parent >> .child')
+    Direct child:
+
+    locator('div.parent > .child')
+    >> is Playwright-specific and often optional in newer versions; use > for direct child in CSS.
+
+    5. Text Selector
+    Playwright has special syntax for text:
+
+    locator('text="Submit"')
+    // Or
+    locator('text=Submit')
+    // Case-insensitive partial match
+    locator('text=/submit/i')
