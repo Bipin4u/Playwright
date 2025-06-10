@@ -3,10 +3,8 @@ await expect(page).toHaveTitle('Google')
 await expect(page.locator()).toContainText('')
 expect(1).toEqual(1) // true
 
-
 page.waitForLoadState('networkidle')
-
-page.locator("text= Add to cart")
+page.locator("text= Add to cart").waitFor()
 page.locator("h3:has-text('zara')")
 page.getByLabel("gender")
 page.getByPlaceHolder("username")

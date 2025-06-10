@@ -15,6 +15,8 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
 
+  retries : 2 ,
+
   // time out for one test case
   timeout : 40 * 1000, 
 
@@ -29,7 +31,7 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  // retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -48,7 +50,16 @@ export default defineConfig({
     screenshot: "only-on-failure",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "off",
+    trace: "retain-on-failure",
+
+    ignoreHTTPSErrors: true, // ✅ Ignore SSL/TLS errors
+
+    // Grant permission to access geolocation API for the tested origin(s)
+    permissions: ['geolocation'],
+
+    video: "retain-on-failure",
+
+   
   },
 
   /* Configure projects for major browsers */
@@ -79,14 +90,28 @@ export default defineConfig({
     // },
 
     /* Test against branded browsers. */
+{
+      name: 'Google Chrome',
+      use: {
+        ...devices['Desktop Chrome'], // can select other devices such as mobiles
+        channel: 'chrome',
+        headless: true,                    // ✅ Run Chrome headed
+        screenshot: 'on',                  // ✅ Capture screenshots
+        trace: 'on',                       // ✅ Enable tracing
+        viewport:{width:1080,height:720}
+      },
+    },
     {
       name: 'Microsoft Edge',
-      use: { ...devices['Desktop Edge'], channel: 'msedge' },
+      use: {
+        ...devices['Desktop Edge'],
+        channel: 'msedge',
+        headless: true,                         // ❌ Run Edge in headless
+        screenshot: 'off',                      // ❌ Disable screenshots
+        trace: 'off',                           // ❌ Disable tracing
+      },
     },
-    {
-      name: 'Google Chrome',
-      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    },
+  
   ],
 
   /* Run your local dev server before starting the tests */

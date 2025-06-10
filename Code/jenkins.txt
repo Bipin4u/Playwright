@@ -1,0 +1,2 @@
+Download Jenkins.war file
+run command = java -jar jenkins.war -httpPort=9090

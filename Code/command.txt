@@ -4,3 +4,12 @@ npx playwright test test/FolderName
 npm playwright codegen url
 npx playwright test --repeat-each=4
 npx playwright test --retries=2
+
+custom config file
+npx playwright test --config filename.config.js
+
+npx playwright test --project safari
+
+to execute based on test case title
+test("login check", async ()=>{})
+npx playwright test --grep login
