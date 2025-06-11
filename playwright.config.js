@@ -15,7 +15,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
 
-  retries : 2 ,
+  retries : 0,
 
   // time out for one test case
   timeout : 40 * 1000, 

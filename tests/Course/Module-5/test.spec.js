@@ -1,35 +1,31 @@
 import {test , expect} from "@playwright/test"
+import POManager from "../../POM/POManager"
+
+let automation
+let pmo
+
+test.beforeEach(async({page})=>{
+    pmo = new POManager(page)
+    automation = pmo.getAutomation()
+    await automation.gotoAutomation()
+})
 
 test("test element is hiddon or visible", async ({page})=>{
-    await  page.goto("https://rahulshettyacademy.com/AutomationPractice/")
     await  expect(page.locator("#displayed-text")).toBeVisible()
-    await  page.locator("//input[@id='hide-textbox']").click()
+    await automation.hide()
     await  expect(page.locator("#displayed-text")).toBeHidden()
 })
 
 test("test js alert box", async ({page})=>{
-    await page.goto("https://rahulshettyacademy.com/AutomationPractice/")
-    await page.locator("//input[@id='name']").fill("Bipin Kumar")
-    page.on("dialog", dialog => dialog.accept())
-    await page.locator("#alertbtn").click()       
+    await automation.alert()
 })
 
-test("hover", async ({page}) =>{
-
-    await page.goto("https://rahulshettyacademy.com/AutomationPractice/")
-    await page.locator("#mousehover").hover()
-    await page.locator(".mouse-hover-content a").nth(0).click() //page scrolls to top
-    // window.scrollY gives the number of pixels the page is currently scrolled vertically.
-    // 0 means the page is at the very top.
-    const scrollPosition = await page.evaluate(() => window.scrollY)
-    expect(scrollPosition).toBe(0); // Assertion: page is at top
+test.only("hover", async ({page}) =>{
+    const scrollPosition = await automation.hover()
+    expect(scrollPosition).toBe(0);
 })
 
-test("test Frames", async ({page})=>{
-    await page.goto("https://rahulshettyacademy.com/AutomationPractice/")
-    const iFrame = page.frameLocator("#courses-iframe")
-    await iFrame.locator("a[href*='lifetime-access']:visible").click()
-    const val = await iFrame.locator("div[class='text'] h2 span").textContent()
-    // console.log(val)
-    expect(val).toEqual("13,522")
+test.only("test Frames", async ()=>{
+    const frame = pmo.getIframe()
+    await automation.gotoAllAccessPlan()
 })
