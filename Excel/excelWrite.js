@@ -1,6 +1,5 @@
 import ExcelJs from "exceljs"
 
-
 const excelTest = async (str,edit) =>{
     let col
     let roww
@@ -15,11 +14,8 @@ const excelTest = async (str,edit) =>{
             }
         })
     })
-    // to write into excel file
     const cell = worksheet.getCell(roww,col)
     cell.value = edit
     await workbook.xlsx.writeFile("C:/Users/Bipin Kumar/Desktop/Test/Excel/download.xlsx")
 }
-
-
 excelTest("Iphone",'I')

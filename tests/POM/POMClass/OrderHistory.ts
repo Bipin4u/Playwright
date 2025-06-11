@@ -1,12 +1,14 @@
 import { Locator, Page, expect } from "@playwright/test";
-import { deflate } from "zlib";
+
 
 class OrderHistory {
     page: Page
     card: Locator
+    firstOrderViewButton: Locator
     constructor(page: Page) {
         this.page = page
         this.card = this.page.locator("tr.ng-star-inserted")
+        this.firstOrderViewButton = this.page.locator("//tbody/tr[1]/td[5]/button[1]")
     }
     async matchOrder(orderID:string) {
         await this.card.last().waitFor()
@@ -20,6 +22,9 @@ class OrderHistory {
             }
         }
         await expect(this.page.locator(".col-text")).toHaveText(orderID)
+    }
+    async gotoFirstOrder(){
+        await this.firstOrderViewButton.click()
     }
 }
 export default OrderHistory;

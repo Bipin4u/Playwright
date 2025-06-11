@@ -20,12 +20,12 @@ test("test js alert box", async ({page})=>{
     await automation.alert()
 })
 
-test.only("hover", async ({page}) =>{
+test("hover", async ({page}) =>{
     const scrollPosition = await automation.hover()
     expect(scrollPosition).toBe(0);
 })
 
-test.only("test Frames", async ()=>{
+test("test Frames", async ()=>{
     const frame = pmo.getIframe()
     await automation.gotoAllAccessPlan()
 })

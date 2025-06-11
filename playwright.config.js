@@ -101,16 +101,16 @@ export default defineConfig({
         viewport:{width:1080,height:720}
       },
     },
-    {
-      name: 'Microsoft Edge',
-      use: {
-        ...devices['Desktop Edge'],
-        channel: 'msedge',
-        headless: true,                         // ❌ Run Edge in headless
-        screenshot: 'off',                      // ❌ Disable screenshots
-        trace: 'off',                           // ❌ Disable tracing
-      },
-    },
+    // {
+    //   name: 'Microsoft Edge',
+    //   use: {
+    //     ...devices['Desktop Edge'],
+    //     channel: 'msedge',
+    //     headless: true,                         // ❌ Run Edge in headless
+    //     screenshot: 'off',                      // ❌ Disable screenshots
+    //     trace: 'off',                           // ❌ Disable tracing
+    //   },
+    // },
   
   ],
 
