@@ -15,7 +15,6 @@ test("test js alert box", async ({page})=>{
 })
 
 test("hover", async ({page}) =>{
-
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/")
     await page.locator("#mousehover").hover()
     await page.locator(".mouse-hover-content a").nth(0).click() //page scrolls to top

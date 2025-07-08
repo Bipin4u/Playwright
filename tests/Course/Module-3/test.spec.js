@@ -9,7 +9,7 @@ test("Login with checkbox", async ({page}) =>{
     await page.locator(".customradio").last().click()
     await page.locator("#okayBtn").click()
     await expect(page.locator(".customradio").last()).toBeChecked()
-     await page.waitForTimeout(1000)
+    await page.waitForTimeout(1000)
     await page.getByRole('checkbox', { name: 'I Agree to the terms and' }).check()
     await page.waitForTimeout(1000)
     await expect(page.getByRole('checkbox', { name: 'I Agree to the terms and' })).toBeChecked()

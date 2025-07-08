@@ -11,7 +11,6 @@ const excelTest = async ()=>{
                 console.log(rowNumber,colNumber,cell.value)
                 return [rowNumber,colNumber]
             }
-            
         })
     })
 }

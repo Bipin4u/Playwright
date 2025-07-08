@@ -13,3 +13,70 @@ npx playwright test --project safari
 to execute based on test case title
 test("login check", async ()=>{})
 npx playwright test --grep login
+
+
+npx playwright install	Install all required browsers (Chromium, Firefox, WebKit).
+npx playwright install <browser>	Install a specific browser (chromium, firefox, webkit).
+npx playwright uninstall	Remove all browser binaries.
+npx playwright install-deps	Install required dependencies for browsers (Linux only).
+npx playwright open <url>	Open a browser window for debugging or development.
+npx playwright codegen	Launch interactive code generator.
+npx playwright codegen <url>	Open URL and record script for that session.
+npx playwright codegen --device="<device>" <url>	Emulate device while recording (e.g., iPhone 12).
+npx playwright test	Run all tests with Playwright Test Runner.
+npx playwright test <test-file>	Run a specific test file.
+npx playwright test -g "<name>"	Run tests matching name pattern.
+npx playwright test --project=<name>	Run test for a specific project (e.g., browser/device).
+npx playwright test --config=<file>	Run using a specific config file.
+npx playwright test --headed	Run tests with browser UI visible.
+npx playwright test --debug	Run tests with debugger enabled.
+npx playwright test --trace=on	Always capture traces.
+npx playwright test --trace=retain-on-failure	Capture trace only on test failure.
+npx playwright show-report	Open the HTML report in browser.
+npx playwright show-trace <trace.zip>	Open the trace viewer.
+npx playwright update	Update Playwright to the latest version.
+npx playwright update --with-deps	Update browsers and dependencies (Linux only).
+npx playwright screenshot <url> <file>	Take screenshot of a URL and save it to file.
+npx playwright pdf <url> <file>	Generate PDF from a page (Chromium only).
+npx playwright launch <browser>	Launch specific browser (used mostly in scripts).
+npx playwright devices	List all available device emulations.
+npx playwright cr <url>	Run a Chromium session and take actions manually (short for codegen).
+npx playwright init	Scaffold a new test project with config and example specs.
+npx playwright test --last-failed       run failed test case again
+
+
+--reporter=<name>	Set reporter type (list, dot, json, html, junit, etc.).
+--output=<dir>	Set output directory for artifacts (screenshots, videos, traces).
+--workers=<number>	Set number of parallel workers.
+--retries=<number>	Retry failed tests N times.
+--grep <regex>	Run only tests matching regex.
+--project=<name>	Run tests for a named browser/device in config.
+
+
+
+
+npx cucumber-js	                                            Run all Cucumber tests (from .feature files).
+npx cucumber-js <path>	                                    Run tests in a specific feature file or directory. Example: features/login.feature
+npx cucumber-js --tags "@tag"	                            Run scenarios with the specified tag (e.g., @smoke).
+npx cucumber-js --require <path>	                        Load step definitions or hooks from the given file/folder.
+npx cucumber-js --require-module ts-node/register	        Allow execution of .ts files (TypeScript support).
+npx cucumber-js --name "scenario name"	                    Run a specific scenario matching a string.
+npx cucumber-js --parallel <num>	                        Run tests in parallel using multiple worker processes.
+npx cucumber-js --retry <num>	                            Retry failing scenarios the given number of times.
+npx cucumber-js --fail-fast	                                Stop running tests after the first failure.
+npx cucumber-js --dry-run	                                Check step definition mappings without executing steps.
+npx cucumber-js --snippets	                                Enable or disable generation of code snippets for undefined steps (true/false).
+npx cucumber-js --publish	                                Upload your test results to Cucumber Reports (web-based dashboard).
+npx cucumber-js --format <type>	                            Set output format. Examples: progress, json, summary, html, junit.
+npx cucumber-js --format-options '{"colorsEnabled":false}'	Configure format settings. Useful for CI environments.
+npx cucumber-js --world-parameters '{"user": "bipin"}'	    Pass custom data to the World context.
+npx cucumber-js --exit	                                    Force exit after tests finish (prevents hanging).
+npx cucumber-js --backtrace	                                Show full stack traces for errors.
+npx cucumber-js --help	                                    Show all available Cucumber options.
+npx cucumber-js --version	                                Show the version of Cucumber.js installed.
+
+Expression	What it Does
+@smoke	Runs all scenarios with @smoke tag
+not @wip	Excludes @wip scenarios
+@smoke and @regression	Scenarios tagged with both @smoke and @regression
+@smoke or @regression	Scenarios tagged with either @smoke or @regression

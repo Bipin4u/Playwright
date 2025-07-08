@@ -1,7 +1,5 @@
-import {test, request , expect, browser} from "@playwright/test"
+import {test, expect} from "@playwright/test"
 import Utils from "./Utils"
-
-
 
 const dummyData = {data:[],message:"No Orders"}
 const data = {userEmail: "bipin.kumar.pros@gmail.com", userPassword: "Bipin@1234"}
@@ -18,6 +16,10 @@ test.beforeAll(async ({browser})=>{
     // await this.context.storageState({path : "state.json"})
     // newContext = await browser.newContext({storageState: "state.json"})
 
+// Inject script to set token in localStorage
+//   await page.addInitScript((token) => {
+//     window.localStorage.setItem('token', token);
+//   }, token);
 
 test("set session storage through json file", async ()=>{
     const page = await newContext.newPage()

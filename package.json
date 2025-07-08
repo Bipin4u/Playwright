@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "test",
   "version": "1.0.0",
   "main": "index.js",
@@ -11,8 +12,10 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.52.0",
-    "@types/node": "^22.15.23",
+    "@cucumber/cucumber": "^11.3.0",
+    "@playwright/test": "^1.53.0",
+    "@types/node": "^22.15.31",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
 }
