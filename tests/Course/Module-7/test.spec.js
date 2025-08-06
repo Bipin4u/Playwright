@@ -13,7 +13,7 @@ test.beforeAll(async ({browser})=>{
     newContext = await browser.newContext({storageState: "./tests/Course/Module-7/state.json"})
 })
     // Set StorageSession through json file  
-    // await this.context.storageState({path : "state.json"})
+    // await this.context.storageState({path : "state.json"}) 
     // newContext = await browser.newContext({storageState: "state.json"})
 
 // Inject script to set token in localStorage
@@ -49,7 +49,6 @@ test("response interseption", async () =>{
     await expect(page.locator("div div.ng-star-inserted")).toHaveText(" You have No Orders to show at this time. Please Visit Back Us ")
 })
 
-
 test("request interseption", async ({ page }) => {
   await page.goto('https://rahulshettyacademy.com/client');
   await page.getByRole('textbox', { name: 'email@example.com' }).click();
@@ -65,7 +64,6 @@ test("request interseption", async ({ page }) => {
   })
   await page.locator("//tbody/tr[1]/td[5]/button[1]").click()
   await expect(page.locator("p.blink_me")).toHaveText("You are not authorize to view this order")
-
 });
 
 

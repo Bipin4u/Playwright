@@ -28,8 +28,8 @@ test('Login and print cart content', async ({page}) =>{
     await page.waitForLoadState('networkidle')
     // another way of waiting for the element to show up- waitFor() waits for only one element
     // await page.locator(".card-body b").first().waitFor()       
-    const names = await page.locator(".card-body b").allTextContents()
+    const names = await page.locator(".card-body b").allTextContents() 
     // console.log(names[0])
-    
+
 
 })

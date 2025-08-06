@@ -56,9 +56,7 @@ export default defineConfig({
     // Grant permission to access geolocation API for the tested origin(s)
     permissions: ['geolocation'],
 
-    video: "retain-on-failure",
-
-   
+    video: "retain-on-failure",   
   },
 
   /* Configure projects for major browsers */
