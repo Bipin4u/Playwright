@@ -3,9 +3,8 @@ import {test,expect} from "@playwright/test"
 test("screenShots", async ({ page }) => {
   await page.goto("https://www.google.com");
   const img = await page.locator(".LS8OJ").screenshot();
-  expect(img).toMatchSnapshot({path:"/images/google.png"}); 
+  expect(img).toMatchSnapshot('google.png');
 });
-
 
 // test('should download a file and save it', async ({ browser }) => {
 //   // Create a new context with download support
