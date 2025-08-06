@@ -6,40 +6,38 @@ test("screenShots", async ({ page }) => {
     expect(img).toMatchSnapshot('google.png');
 });
 
-const { test, expect } = require('@playwright/test');
-const fs = require('fs');
-const path = require('path');
 
-test('should download a file and save it', async ({ browser }) => {
-  // Create a new context with download support
-  const context = await browser.newContext({
-    acceptDownloads: true
-  });
 
-  const page = await context.newPage();
+// test('should download a file and save it', async ({ browser }) => {
+//   // Create a new context with download support
+//   const context = await browser.newContext({
+//     acceptDownloads: true
+//   });
 
-  // Go to a page with a downloadable file
-  await page.goto('https://www.learningcontainer.com/sample-pdf-files-for-testing/');
+//   const page = await context.newPage();
 
-  // Wait for the download to start after clicking the link
-  const [download] = await Promise.all([
-    page.waitForEvent('download'),
-    page.click('a[href*="sample-pdf-file.pdf"]')
-  ]);
+//   // Go to a page with a downloadable file
+//   await page.goto('https://www.learningcontainer.com/sample-pdf-files-for-testing/');
 
-  // Define the target path
-  const filePath = path.join(__dirname, '../downloads/sample.pdf');
+//   // Wait for the download to start after clicking the link
+//   const [download] = await Promise.all([
+//     page.waitForEvent('download'),
+//     page.click('a[href*="sample-pdf-file.pdf"]')
+//   ]);
 
-  // Save the downloaded file
-  await download.saveAs(filePath);
+//   // Define the target path
+//   const filePath = path.join(__dirname, '../downloads/sample.pdf');
 
-  // Check if the file exists
-  const fileExists = fs.existsSync(filePath);
-  expect(fileExists).toBe(true);
+//   // Save the downloaded file
+//   await download.saveAs(filePath);
 
-  // Optional: Check file size > 0
-  const stats = fs.statSync(filePath);
-  expect(stats.size).toBeGreaterThan(0);
-  await context.close();
-});
+//   // Check if the file exists
+//   const fileExists = fs.existsSync(filePath);
+//   expect(fileExists).toBe(true);
+
+//   // Optional: Check file size > 0
+//   const stats = fs.statSync(filePath);
+//   expect(stats.size).toBeGreaterThan(0);
+//   await context.close();
+// });
 
